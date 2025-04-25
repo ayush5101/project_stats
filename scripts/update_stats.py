@@ -1,4 +1,6 @@
 import csv
+import matplotlib.pyplot as plt
+
 from datetime import datetime
 
 def load_runs(file):
@@ -37,9 +39,24 @@ def write_markdown(stats):
         f.write(f"**Best 10K Time:** {stats[2]} min\n\n")
         f.write(f"**Best Half Marathon:** {stats[3]} min\n\n")
         f.write("🚀 Keep pushing!\n")
+
+def plot_distance_over_time(runs):
+    dates = [row["date"] for row in runs]
+    distances = [float(row["distance_km"]) for row in runs]
+
+    plt.figure(figsize=(10, 5))
+    plt.plot(dates, distances, marker='o')
+    plt.title("Distance Over Time")
+    plt.xlabel("Date")
+    plt.ylabel("Distance (km)")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("output/distance_graph.png")
    
 
 if __name__ == "__main__":
     runs = load_runs("data/runs.csv")
     stats = calculate_stats(runs)
+    plot_distance_over_time(runs)
+
     write_markdown(stats)
