@@ -41,9 +41,3 @@ Special thanks to ChatGPT, which guided me through the process of writing the gr
 
 ---
 
-### Changes:
-- Removed the Flask app section since you're not using it.
-- Focused on the graph generation part, explaining how the data is processed and visualized.
-- Acknowledged ChatGPT's help with the graph code.
-
-Feel free to modify or expand on this! Let me know if you'd like any more changes.
